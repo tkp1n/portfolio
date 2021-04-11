@@ -1,5 +1,6 @@
 {
   "name": "portfolio",
+  "description": "Blog by Nicolas Portmann",
   "scripts": {
     "build": "rollup -c",
     "watch": "rollup -c -w",
