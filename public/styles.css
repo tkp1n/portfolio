@@ -1,4 +1,4 @@
-@import 'https://unpkg.com/tailwindcss@2.0.2/dist/base.css';
+@import '/base.css';
 :root {
     --size-0_5: 0.125rem;
     --size-1: 0.250rem;
