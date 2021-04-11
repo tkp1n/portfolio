@@ -1,41 +1,39 @@
-import { html, css } from '../lib/ndp.js';
+import { LitElement, html, css } from 'lit-element';
+import { globalStyles } from '../styles.js';
 
-const styles = css`
-@import '/styles.css';
-footer {
-    margin-top: var(--size-5);
-    margin-bottom: var(--size-2);
-    display: flex;
-    justify-content: center;
-}
-`;
+export class FooterComponent extends LitElement {
+    static get properties() {
+        return {
+            year: {type: Number}
+        }
+    }
 
-const template = (attr) => html`
-<footer>
-    <p class="text-xs">&#169; ${attr.year} - Nicolas Portmann</p>
-</footer>
-`;
+    static get styles() {
+        return [
+            ...globalStyles,
+            css`
+              footer {
+                margin-top: var(--size-5);
+                margin-bottom: var(--size-2);
+                display: flex;
+                justify-content: center;
+              }
+            `
+        ];
+    }
 
-class FooterComponent extends HTMLElement {
     constructor() {
         super();
-
-        const attributes = {
-            year: new Date().getFullYear()
-        };
-
-        const content = document.createElement('div');
-        content.innerHTML = template(attributes);
-
-        const style = document.createElement('style');
-        style.textContent = styles;
-
-        const shadowRoot = this.attachShadow({mode: 'open'});
-
-        shadowRoot.append(style, ...content.children);
+        this.year = new Date().getFullYear();
     }
-};
+
+    render() {
+        return html`
+            <footer>
+                <p class="text-xs">&#169; ${this.year} - Nicolas Portmann</p>
+            </footer>
+        `;
+    }
+}
 
 customElements.define("ndp-footer", FooterComponent);
-
-export default FooterComponent;

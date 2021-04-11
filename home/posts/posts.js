@@ -1,33 +1,23 @@
-import { html, css } from '../../lib/ndp.js';
-const styles = css`
-@import '/styles.css';
-`;
+import { LitElement, html } from 'lit-element';
+import { globalStyles } from '../../styles.js';
 
-const template = html`
-<section>
-    <h2>Blog Posts</h2>
-    <div>
-        <slot></slot>
-    </div>
-</section>
-`;
+export class PostListComponent extends LitElement {
+    static get styles() {
+        return [
+            ...globalStyles
+        ];
+    }
 
-class PostListComponent extends HTMLElement {
-    constructor() {
-        super();
-
-        const content = document.createElement('div');
-        content.innerHTML = template;
-
-        const style = document.createElement('style');
-        style.textContent = styles;
-
-        const shadowRoot = this.attachShadow({mode: 'open'});
-        
-        shadowRoot.append(style, ...content.children);
+    render() {
+        return  html`
+            <section>
+                <h2>Blog Posts</h2>
+                <div>
+                    <slot></slot>
+                </div>
+            </section>
+        `;
     }
 }
 
 customElements.define("ndp-post-list", PostListComponent);
-
-export default PostListComponent;

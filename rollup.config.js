@@ -23,10 +23,10 @@ export default {
 			],
 			copyOnce: true
 		}),
+		resolve(),
 		mdBuild({
 			basePath: 'content/posts'
 		}),
-		resolve(),
 		minifyHTML(),
 		production && terser() // minify, but only in production
 	]

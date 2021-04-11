@@ -9,6 +9,7 @@
     "clean": "node lib/clean.js"
   },
   "dependencies": {
+    "lit-element": "^2.4.0",
     "router-slot": "^1.5.4"
   },
   "devDependencies": {

@@ -1,37 +1,28 @@
-import { html, css } from '../../lib/ndp.js';
+import { LitElement, html, css } from 'lit-element';
+import { globalStyles } from '../../styles.js';
 
-const styles = css`
-@import '/styles.css';
-div {
-    padding-bottom: var(--size-1);
-}
-`;
+export class ContributionsComponent extends LitElement {
+    static get styles() {
+        return [
+            ...globalStyles,
+            css`
+              div {
+                padding-bottom: var(--size-1);
+              }
+            `
+        ]
+    }
 
-const template = html`
-<section>
-    <h2>OSS Contributions</h2>
-    <div class="shadow rounded">
-        <slot></slot>
-    </div>
-</section>
-`;
-
-class ContributionsComponent extends HTMLElement {
-    constructor() {
-        super();
-
-        const content = document.createElement('div');
-        content.innerHTML = template;
-
-        const style = document.createElement('style');
-        style.textContent = styles;
-
-        const shadowRoot = this.attachShadow({mode: 'open'});
-
-        shadowRoot.append(style, ...content.children);
+    render() {
+        return html`
+            <section>
+                <h2>OSS Contributions</h2>
+                <div class="shadow rounded">
+                    <slot></slot>
+                </div>
+            </section>
+        `;
     }
 }
 
 customElements.define('ndp-contributions', ContributionsComponent);
-
-export default ContributionsComponent;
