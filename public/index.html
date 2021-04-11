@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
+    <title>Nicolas Portmann</title>
+    <meta name="description" content="A Software Engineering Blog">
+    <meta property="og:url" content="https://ndportmann.com/">
+    <meta property="og:title" content="Nicolas Portmann - Software Engineer">
+    <meta property="og:description" content="A blog about software engineering and applied cryptography.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:site" content="@tkp1n">
+    <meta name="twitter:creator" content="@tkp1n">
+    <meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <router-slot></router-slot>
+    <script type="module">
+        import("/routes.js");
+        window.supportsDynamicImport = true;
+    </script>
+</body>
+</html>
