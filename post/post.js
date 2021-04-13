@@ -6,7 +6,7 @@ import './post-header.js';
 import '../global/post-tags.js';
 import '../global/footer.js';
 
-export class PostComponent extends LitElement {
+export default class PostComponent extends LitElement {
     static get properties() {
         return {
             post: { type: String },
@@ -115,14 +115,11 @@ export class PostComponent extends LitElement {
 
     constructor(data) {
         super();
-        console.log(data);
-        this.post = 'Loading...'
+        this.post = data.content;
         this.title = data.title;
         this.date = data.date;
         this.author = data.author;
         this.category = data.category;
-
-        data.html().then(html => this.post = html.CONTENT);
     }
 
     render() {

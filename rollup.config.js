@@ -29,5 +29,6 @@ export default {
 		}),
 		minifyHTML(),
 		production && terser() // minify, but only in production
-	]
+	],
+	preserveEntrySignatures: 'strict'
 };
