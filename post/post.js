@@ -1,7 +1,7 @@
 import { LitElement, html, css } from 'lit-element';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { globalStyles } from '../styles.js';
-import { codeStyles } from "../codeStyles.js";
+import { codeStyles } from '../codeStyles.js';
 import './post-header.js';
 import '../global/post-tags.js';
 import '../global/footer.js';

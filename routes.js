@@ -17,12 +17,12 @@ const routes = [
         component: createComponentForPost(post)
     }))),
     {
-        path: "**",
+        path: '**',
         component: HomeComponent
     }
 ]
 
-customElements.whenDefined("router-slot").then(async () => {
+customElements.whenDefined('router-slot').then(async () => {
     const routerSlot = document.querySelector('router-slot');
     await routerSlot.add(routes);
 });

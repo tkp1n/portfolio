@@ -2,7 +2,7 @@ import { terser } from 'rollup-plugin-terser';
 import resolve from '@rollup/plugin-node-resolve';
 import minifyHTML from 'rollup-plugin-minify-html-literals';
 import copy from 'rollup-plugin-copy';
-import mdBuild from "./lib/mdBuild.js";
+import mdBuild from './lib/mdBuild.js';
 
 // `npm run build` -> `production` is true
 // `npm run dev` -> `production` is false

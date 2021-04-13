@@ -76,4 +76,4 @@ export class PostListItemComponent extends LitElement {
     }
 }
 
-customElements.define("ndp-post-list-item", PostListItemComponent);
+customElements.define('ndp-post-list-item', PostListItemComponent);
