@@ -1,8 +1,8 @@
 ---
 title: Pascal's triangle
-category: "scala"
+category: "Scala"
 cover: anton-kraev-1165305-unsplash.jpg
-author: nicolas portmann
+author: Nicolas Portmann
 ---
 
 ## The challenge

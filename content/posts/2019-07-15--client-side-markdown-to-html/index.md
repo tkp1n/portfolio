@@ -1,8 +1,8 @@
 ---
 title: Convert Markdown to HTML in an Angular app
-category: "webdev"
+category: "Web Dev"
 cover: pankaj-patel-u2Ru4QBXA5Q-unsplash.jpg
-author: nicolas portmann
+author: Nicolas Portmann
 ---
 
 Converting Markdown with code fragments to HTML on the client (Angular) can be done in under 50 LoC. This blog post guides you through it.

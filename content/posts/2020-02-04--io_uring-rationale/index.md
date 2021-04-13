@@ -1,8 +1,8 @@
 ---
 title: An io_uring based Transport Layer (Part I) - Rationale
-category: "iouring"
+category: "io_uring"
 cover: ethan-robertson-FmMzl1RA7FY-unsplash.jpg
-author: nicolas portmann
+author: Nicolas Portmann
 ---
 
 In this series, we are going to explore what it takes to develop an `io_uring`-based Transport layer for .NET. But before we are getting down to the nitty-gritty, we should think about whether this endeavor is a good idea to begin with.

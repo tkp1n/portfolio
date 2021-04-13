@@ -1,8 +1,8 @@
 ---
 title: Logging with Context in Spring WebFlux (Part II)
-category: "java"
+category: "Java"
 cover: markus-spiske-445253-unsplash.jpg
-author: nicolas portmann
+author: Nicolas Portmann
 ---
 
 In the first part, we investigated how context information such as MDCs can be passed from and to a Spring WebFlux application. We shall now investigate how we can enrich said context and include it in our log messages.

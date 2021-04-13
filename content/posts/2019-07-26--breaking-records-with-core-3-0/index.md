@@ -1,8 +1,8 @@
 ---
 title: Breaking all existing Hex Encoding Records with .NET Core 3.0
-category: "dotnet"
+category: ".NET"
 cover: samuel-zeller-2VXRa5gvpxc-unsplash.jpg
-author: nicolas portmann
+author: Nicolas Portmann
 ---
 
 It all started over 10 years ago when someone dared to ask "[how to convert a byte array to a hexadecimal string?](https://stackoverflow.com/questions/311165/how-do-you-convert-a-byte-array-to-a-hexadecimal-string-and-vice-versa?answertab=oldest#tab-top)" over at Stack Overflow. The community quickly provided several very different answers. Some involved loops, some LINQ, others bent the available Framework-methods to their needs. Both bit fiddlers and lookup table magicians entered the field and presented their more and more unsafe solutions. [Adam Patridge](https://github.com/patridge) stepped in quite a bit later and benchmarked all submitted solutions.

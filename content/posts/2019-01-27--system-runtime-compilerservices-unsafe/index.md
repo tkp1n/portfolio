@@ -1,8 +1,8 @@
 ---
 title: Unsafe array access and pointer arithmetics in C#
-category: "dotnet"
+category: ".NET"
 cover: joey-banks-380271-unsplash.jpg
-author: nicolas portmann
+author: Nicolas Portmann
 ---
 
 Before the introduction of [ref returns and ref locals in C# 7.0](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-7#ref-locals-and-returns) and following improvements such as [conditional ref expressions in C# 7.2](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-7-2#conditional-ref-expressions) and [ref reassignments in C# 7.3](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-7-3#ref-local-variables-may-be-reassigned) there was no way to perform pointer arithmetics in C# without going [unsafe](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/unsafe-code-pointers/index). This post explores `System.Runtime.CompilerServices.Unsafe` a class capable of replacing both the `unsafe` and the `fixed` keywords from your codebase. Be aware, that doing so does not increase the readability of your codebase if anything the opposite is the case. However, it could very well make it faster.

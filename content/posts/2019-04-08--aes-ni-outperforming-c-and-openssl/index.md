@@ -1,8 +1,8 @@
 ---
 title: AES-NI (.NET) - Outperforming C and OpenSSL
-category: "crypto"
+category: "Crypto"
 cover: marc-olivier-jodoin-291607-unsplash.jpg
-author: nicolas portmann
+author: Nicolas Portmann
 ---
 
 > This is the third and last post of a small series on AES-NI and .NET Core hardware intrinsics. Please also have a look at the [first post](https://ndportmann.com/improving-dotnet-crypto-code/) and the [second post](https://ndportmann.com/aes-ni-key-expansion/).

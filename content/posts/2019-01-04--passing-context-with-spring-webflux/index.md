@@ -1,8 +1,8 @@
 ---
 title: Passing Context with Spring WebFlux (Part I)
-category: "java"
+category: "Java"
 cover: rawpixel-678089-unsplash.jpg
-author: nicolas portmann
+author: Nicolas Portmann
 ---
 
 With traditional Jakarta EE (Java EE) or Spring projects, we utilize [MDCs (Mapped Diagnostic Context)](https://logback.qos.ch/manual/mdc.html) - a feature from SLF4J - to enrich logs with contextual data. Such contextual data might include but is not limited to the following:

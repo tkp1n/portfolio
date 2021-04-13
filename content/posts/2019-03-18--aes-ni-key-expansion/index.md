@@ -1,8 +1,8 @@
 ---
 title: AES-NI (.NET) - Key Expansion
-category: "crypto"
+category: "Crypto"
 cover: sebastian-davenport-handley-746868-unsplash.jpg
-author: nicolas portmann
+author: Nicolas Portmann
 ---
 
 > This is the second post of a small series on AES-NI and .NET Core hardware intrinsics. Please also have a look at the [first post](https://ndportmann.com/improving-dotnet-crypto-code/) and be patient for the next one, to which I'll add the link once it is are ready.

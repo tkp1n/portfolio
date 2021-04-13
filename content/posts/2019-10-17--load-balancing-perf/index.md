@@ -1,8 +1,8 @@
 ---
 title: Randomized Round Robin (Load Balancing) as Fast as Possible
-category: "dotnet"
+category: ".NET"
 cover: taylor-vick-M5tzZtFCOfs-unsplash.jpg
-author: nicolas portmann
+author: Nicolas Portmann
 ---
 
 Another episode on gaining performance improvements by doing the as little as possible on the hot-path.

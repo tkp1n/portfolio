@@ -1,8 +1,8 @@
 ---
 title: An io_uring based Transport Layer (Part III) - Preview Release
-category: "iouring"
+category: "io_uring"
 cover: "cris-ovalle-YTk8tO3PGdA-unsplash.jpg"
-author: nicolas portmann
+author: Nicolas Portmann
 ---
 
 Round 19 of the TechEmpower Benchmarks just completed, and ASP.NET [topped the charts](https://www.techempower.com/benchmarks/#section=data-r19&hw=ph&test=plaintext) for the "Plaintext" type of tests. In fact, quite a few platforms are able to [saturate 10GbE at 7+ million request/s](https://www.ageofascent.com/2019/02/04/asp-net-core-saturating-10gbe-at-7-million-requests-per-second/), which could lead us to think that there is no room for improvements. I beg to differ.

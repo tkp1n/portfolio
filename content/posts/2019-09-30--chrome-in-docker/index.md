@@ -1,8 +1,8 @@
 ---
 title: Running Chrome in Docker for CI/CD
-category: "webdev"
+category: "Web Dev"
 cover: chuttersnap-9cCeS9Sg6nU-unsplash.jpg
-author: nicolas portmann
+author: Nicolas Portmann
 ---
 
 Running Chrome headless in Docker turns out to be surprisingly hard. Many resources on the internet suggest to disable the sandbox, and everything works fine. **Please don't trust random people on the internet, telling you to disable security features**.

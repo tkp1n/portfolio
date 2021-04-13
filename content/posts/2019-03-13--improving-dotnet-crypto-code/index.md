@@ -1,8 +1,8 @@
 ---
 title: Improving the performance of .NET crypto code
-category: "crypto"
+category: "Crypto"
 cover: kolleen-gladden-224796-unsplash.jpg
-author: nicolas portmann
+author: Nicolas Portmann
 ---
 
 > This is the first (and maybe least interesting) post of a small series on AES-NI and .NET Core hardware intrinsics. The [next post](https://ndportmann.com/aes-ni-key-expansion/) starts to take a deep dive into AES-NI. This one is more about efficiently using the existing crypto APIs in .NET.

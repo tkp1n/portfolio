@@ -1,8 +1,8 @@
 ---
 title: An io_uring based Transport Layer (Part II) - Foundation
-category: "iouring"
+category: "io_uring"
 cover: "mirko-blicke-V_y81v_lI4k-unsplash.jpg"
-author: nicolas portmann
+author: Nicolas Portmann
 ---
 
 In this series, we are going to explore what it takes to develop an `io_uring`-based Transport layer for .NET. In this episode, we introduce the `IoUring`-library - the foundation on which we shall build our Transport layer.
