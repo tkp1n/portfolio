@@ -11,7 +11,14 @@ export class PostListItemComponent extends LitElement {
             webp: { type: String },
             jpeg: { type: String },
             title: { type: String },
-            date: { type: String },
+            date: {
+                type: String,
+                converter: {
+                    fromAttribute(value) {
+                        return new Date(value).toLocaleDateString();
+                    }
+                }
+            },
             author: { type: String },
             category: { type: String },
             abstract: { type: String },

@@ -117,7 +117,7 @@ export default class PostComponent extends LitElement {
         super();
         this.post = data.content;
         this.title = data.title;
-        this.date = data.date;
+        this.date = new Date(data.date).toLocaleDateString();
         this.author = data.author;
         this.category = data.category;
     }
