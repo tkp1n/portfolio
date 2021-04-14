@@ -5,12 +5,8 @@
             "serve": "/robots.txt"
         },
         {
-            "route": "/googlead9160c55373c0f2.html",
-            "serve": "/googlead9160c55373c0f2.html"
-        },
-        {
-            "route": "/BingSiteAuth.xml",
-            "serve": "/BingSiteAuth.xml"
+            "route": "/sitemap.xml",
+            "serve": "/sitemap.xml"
         },
         {
             "route": "/*",

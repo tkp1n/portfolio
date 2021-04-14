@@ -25,7 +25,9 @@ export default {
 		}),
 		resolve(),
 		mdBuild({
-			basePath: 'content/posts'
+			baseUrl: 'https://salmon-coast-03ea6f003.azurestaticapps.net/',
+			basePath: 'content/posts',
+			targetPath: './public'
 		}),
 		minifyHTML(),
 		production && terser() // minify, but only in production
