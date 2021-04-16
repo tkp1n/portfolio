@@ -675,6 +675,7 @@ const styles = css`
   }
 
   h4 {
+    margin-top: var(--size-5);
     font-weight: var(--weight-semibold);
   }
 
