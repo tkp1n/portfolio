@@ -5,21 +5,21 @@ cover: rawpixel-678089-unsplash.jpg
 author: Nicolas Portmann
 ---
 
-With traditional Jakarta EE (Java EE) or Spring projects, we utilize [MDCs (Mapped Diagnostic Context)](https://logback.qos.ch/manual/mdc.html) - a feature from SLF4J - to enrich logs with contextual data. Such contextual data might include but is not limited to the following:
+With traditional Jakarta EE (Java EE) or Spring projects, we utilize [MDCs (Mapped Diagnostic Context)](https://logback.qos.ch/manual/mdc.html "Mapped Diagnostic Context - LOGBack") - a feature from SLF4J - to enrich logs with contextual data. Such contextual data might include but is not limited to the following:
 
 - Request ID,
 - DNS name of the hardware involved in processing the request,
 - The ID of the client initiating the request
 
-In a microservices environment, this information is then typically passed to all services involved in handling a specific client request. Although [deprecated](https://tools.ietf.org/html/rfc6648) we examine, how to best pass context information between services as HTTP non-standard `X-` headers. We also investigate in the second part of this post, how to use constructs such as MDCs in a reactive environment, where `ThreadLocal`s cannot be used to store context. 
+In a microservices environment, this information is then typically passed to all services involved in handling a specific client request. Although [deprecated](https://tools.ietf.org/html/rfc6648 "RFC6648 deprecating X- prefixed headers") we examine, how to best pass context information between services as HTTP non-standard `X-` headers. We also investigate in the second part of this post, how to use constructs such as MDCs in a reactive environment, where `ThreadLocal`s cannot be used to store context. 
 
-The solution to the latter is a variation of [this excellent idea by Simon Basle](https://simonbasle.github.io/2018/02/contextual-logging-with-reactor-context-and-mdc/). I suggest you skim over it before reading the second part, a link to which you can find at the very bottom of this page.
+The solution to the latter is a variation of [this excellent idea by Simon Basle](https://simonbasle.github.io/2018/02/contextual-logging-with-reactor-context-and-mdc/ "Contextual Logging with Reactor Context and MDC - Simon Basle"). I suggest you skim over it before reading the second part, a link to which you can find at the very bottom of this page.
 
 ## Handling headers with WebFilters
 
-`WebFilter`s function much like their [servelt counterparts](https://www.oracle.com/technetwork/java/filters-137243.html), but using Spring and Reactor specific APIs. 
+`WebFilter`s function much like their [servelt counterparts](https://www.oracle.com/technetwork/java/filters-137243.html "Filters - Java Servlet Documentation"), but using Spring and Reactor specific APIs. 
 
-To start, we start we create a Spring `@Component` implementing the `WebFilter` interface. In this component, we register two methods, one for copying the MDCs passed as request headers to the context, a second one to copy the context to the response. Context, in this case, refers to a [well documented](https://projectreactor.io/docs/core/release/reference/#context) concept to handle orthogonal concerns with Reactor (one of the building blocks of Spring WebFulx). 
+To start, we start we create a Spring `@Component` implementing the `WebFilter` interface. In this component, we register two methods, one for copying the MDCs passed as request headers to the context, a second one to copy the context to the response. Context, in this case, refers to a [well documented](https://projectreactor.io/docs/core/release/reference/#context " Adding a Context to a Reactive Sequence - Project Reactor") concept to handle orthogonal concerns with Reactor (one of the building blocks of Spring WebFulx). 
 
 ```java
 @Component
@@ -102,7 +102,7 @@ private Mono<Void> addContextToHttpResponseHeaders(
 }
 ```
 
-> An aside: In Spring 5.0.4 this was not working as expected which motivated me to open my first [issue](https://jira.spring.io/browse/SPR-16597) with Spring. Luckily it was quickly addressed and fixed in Spring 5.0.5.
+> An aside: In Spring 5.0.4 this was not working as expected which motivated me to open my first [issue](https://jira.spring.io/browse/SPR-16597 "SPR-16597 - Spring Jira") with Spring. Luckily it was quickly addressed and fixed in Spring 5.0.5.
 
 ## Summary
 
@@ -151,4 +151,4 @@ The context contains:
 
 You might have noticed, that the context is returned as response headers. Very well and just as expected. In part two, we investigate how we can add more information to the context, and leverage it in the application logs.
 
-> The entire project (including part two) is on [github](https://github.com/tkp1n/mdc-webflux) for your reference.
+> The entire project (including part two) is on [github](https://github.com/tkp1n/mdc-webflux "mdc-webflux on GitHub") for your reference.

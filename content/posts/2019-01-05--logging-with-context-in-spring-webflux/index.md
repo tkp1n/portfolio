@@ -42,12 +42,12 @@ public static Function<Context, Context> put(String key, String value) {
 }
 ```
 
-Above usage of `subscriberContext` seems odd, as the addition to the context appears to be the last operation in the chain of calls. The [Reactor documentation](https://projectreactor.io/docs/core/release/reference/#_simple_examples) sheds some light on this oddity:
+Above usage of `subscriberContext` seems odd, as the addition to the context appears to be the last operation in the chain of calls. The [Reactor documentation](https://projectreactor.io/docs/core/release/reference/#_simple_context_examples "Simple Context Examples - Reactor documentation") sheds some light on this oddity:
 > Even though subscriberContext is the last piece of the chain, it is the one that gets executed first (due to its subscription time nature, and the fact that the subscription signal flows from bottom to top).
 
 ## Logging with context
 
-Time for the final piece of the puzzle; writing logs with set context applied. Just as with the [approach suggested by Simon Basle](https://simonbasle.github.io/2018/02/contextual-logging-with-reactor-context-and-mdc/) (mentioned in the previous post), we utilize `doOnEach` with two helper methods to log with context. The helper methods, in this case, are `logOnNext` and `logOnError`. Both invoke a lambda that accepts the current result or the exception respectively. We could therefore add the following two log statemets to the `processRequestForClient` method from above.
+Time for the final piece of the puzzle; writing logs with set context applied. Just as with the [approach suggested by Simon Basle](https://simonbasle.github.io/2018/02/contextual-logging-with-reactor-context-and-mdc/ "Contextual Logging with Reactor Context and MDC - Simon Basle") (mentioned in the previous post), we utilize `doOnEach` with two helper methods to log with context. The helper methods, in this case, are `logOnNext` and `logOnError`. Both invoke a lambda that accepts the current result or the exception respectively. We could therefore add the following two log statemets to the `processRequestForClient` method from above.
 
 ```java
 @Service
@@ -148,4 +148,4 @@ The log record for the request reads as follows:
 
 We have therefore successfully added information to the context, which ended up both in the response headers and in the log message, together with the context from the callee.
 
-> The entire project is on [github](https://github.com/tkp1n/mdc-webflux) for your reference.
+> The entire project is on [github](https://github.com/tkp1n/mdc-webflux "MDC-WebFlux project on GitHub") for your reference.

@@ -7,12 +7,12 @@ author: Nicolas Portmann
 
 In this series, we are going to explore what it takes to develop an `io_uring`-based Transport layer for .NET. In this episode, we introduce the `IoUring`-library - the foundation on which we shall build our Transport layer.
 
-Make sure to check out the [previous episode](https://ndportmann.com/io_uring-rationale/) in this series, where we talked about what a .NET Transport layer is, and why we should build a new one.
+Make sure to check out the [previous episode](https://ndportmann.com/io_uring-rationale/ "io_uring Rationale - ndportmann.com") in this series, where we talked about what a .NET Transport layer is, and why we should build a new one.
 If you are already familiar with the basics of Linux network programming and `IoUring`s native counterpart `liburing`, by all means, skip this episode and come back for the next one, once it's ready.
 
 ## Linux Network Programming Fundamentals
 
-This chapter is a **very** high-level overview and over-simplification of the syscalls traditionally involved in writing TCP client/server code. I highly recommend the books by Richard Stevens (e.g., [UNIX Network Programming](https://www.amazon.com/dp/0131411551/ref=cm_sw_em_r_mt_dp_U_kNepEbW5QN4R0)), if you want to dig deeper.
+This chapter is a **very** high-level overview and over-simplification of the syscalls traditionally involved in writing TCP client/server code. I highly recommend the books by Richard Stevens (e.g., [UNIX Network Programming](https://www.amazon.com/dp/0131411551/ref=cm_sw_em_r_mt_dp_U_kNepEbW5QN4R0 "UNIX Network Programming - Richard Stevens - amazon.com")), if you want to dig deeper.
 
 It typically all starts with a call to `socket`. We specify the family, type, and protocol of the I/O we want to perform and receive a socket file descriptor in return. Remember, everything in Linux is a file.
 
@@ -38,9 +38,9 @@ Describing the `epoll` interface in detail is too much for the scope of this epi
 
 ## Reducing the Number of Syscalls
 
-In [the last episode](https://ndportmann.com/io_uring-rationale/), we established some levers we can pull to optimize the performance of networking code. One of those is the reduction of syscalls. The rationale behind this is the cost associated with invoking syscalls. Again, check out the [previous episode](https://ndportmann.com/io_uring-rationale/) for more details on this.
+In [the last episode](https://ndportmann.com/io_uring-rationale/ "io_uring Rationale - ndportmann.com"), we established some levers we can pull to optimize the performance of networking code. One of those is the reduction of syscalls. The rationale behind this is the cost associated with invoking syscalls. Again, check out the [previous episode](https://ndportmann.com/io_uring-rationale/ "io_uring Rationale - ndportmann.com") for more details on this.
 
-The community introduced `libaio` (AIO) to tackle this problem. The new syscalls behind AIO can be used to submit multiple socket operations at once (`io_submit`) and to get the results for completed operations with another syscall `io_getevents`. Unfortunately, AIO didn't solve all our problems. `io_submit` can (sometimes) block, and performance overall isn't great. See this [presentation from Jens Axboe](https://www.youtube.com/watch?v=-5T4Cjw46ys) for more hints in this direction.
+The community introduced `libaio` (AIO) to tackle this problem. The new syscalls behind AIO can be used to submit multiple socket operations at once (`io_submit`) and to get the results for completed operations with another syscall `io_getevents`. Unfortunately, AIO didn't solve all our problems. `io_submit` can (sometimes) block, and performance overall isn't great. See this [presentation from Jens Axboe](https://www.youtube.com/watch?v=-5T4Cjw46ys "Faster IO through io_uring - Jens Axboe - YouTube") for more hints in this direction.
 
 ## Enter `io_uring`
 
@@ -66,7 +66,7 @@ Typically, the user application must notify the kernel about I/O operations adde
 
 #### The C# API - Constructor
 
-Behind the scenes, the setup of an `io_uring` instance is relatively complicated. It includes not only the call to `io_uring_setup` but also multiple `mmap`s to get access to the shared memory behind the two ring buffers. All of this complexity is handled for you by the constructor of the `Ring` class introduced in [`IoUring`](https://github.com/tkp1n/IoUring). Given the explanation of the various options above, the following two samples are hopefully fairly self-explanatory.
+Behind the scenes, the setup of an `io_uring` instance is relatively complicated. It includes not only the call to `io_uring_setup` but also multiple `mmap`s to get access to the shared memory behind the two ring buffers. All of this complexity is handled for you by the constructor of the `Ring` class introduced in [`IoUring`](https://github.com/tkp1n/IoUring "IoUring - GitHub"). Given the explanation of the various options above, the following two samples are hopefully fairly self-explanatory.
 
 ```csharp
 var ioUringDefault = new Ring(4096);
@@ -84,7 +84,7 @@ All settings can be queried as public properties on the `Ring` instance. The mos
 
 #### A Word of Warning: ENOMEM
 
-On most Linux distributions, the limit on the locked bytes of memory is set relatively low. This leads to errors (`ENOMEM`), even when creating small rings. To adjust this limit, increase the configuration of the value `RLIMIT_MEMLOCK`. How this is done exactly depends on your distribution. Please refer to the [README](https://github.com/tkp1n/IoUring#setting-proper-resource-limits-rlimit_memlock) of `IoUring` for a starting point on how this is achieved.
+On most Linux distributions, the limit on the locked bytes of memory is set relatively low. This leads to errors (`ENOMEM`), even when creating small rings. To adjust this limit, increase the configuration of the value `RLIMIT_MEMLOCK`. How this is done exactly depends on your distribution. Please refer to the [README](https://github.com/tkp1n/IoUring#setting-proper-resource-limits-rlimit_memlock "README.md - IoUring - GitHub") of `IoUring` for a starting point on how this is achieved.
 
 ### Prepare I/O Operations
 
@@ -92,7 +92,7 @@ Before I/O operations can be submitted to the kernel for execution, they need to
 
 It is generally desirable to prepare as many I/O operations as possible before submitting them. Submitting the prepared operations includes at least a memory-barrier when in polling mode and additionally a syscall in "normal mode".
 
-To get an overview over the I/O operations supported by `io_uring`, please refer to the LWN article ["The rapid growth of io_uring"](https://lwn.net/Articles/810414/). I couldn't do much more than copying Jonathan's statements there.
+To get an overview over the I/O operations supported by `io_uring`, please refer to the LWN article ["The rapid growth of io_uring"](https://lwn.net/Articles/810414/ "The rapid growth of io_uring - lwn.net"). I couldn't do much more than copying Jonathan's statements there.
 
 #### User data
 
@@ -170,4 +170,4 @@ while (r.TryRead(ref c))
 
 The Linux network and I/O APIs have evolved drastically over the years. What started with some simple syscalls quickly became a hard to navigate landscape of async options and functions. `io_uring` promises to simplify things again for network developers. Just a couple of syscalls, easily wrapped and hidden behind a library like `liburing` or `IoUring` enable us to quickly write high-performance networking code.
 
-Stay tuned for more episodes on this topic and check out the [`IoUring`](https://github.com/tkp1n/IoUring) repository, where we build next network Transport layer for .NET. If you want to get involved, there are a couple of open issues waiting for eager contributors 😉.
+Stay tuned for more episodes on this topic and check out the [`IoUring`](https://github.com/tkp1n/IoUring "IoUring - GitHub") repository, where we build next network Transport layer for .NET. If you want to get involved, there are a couple of open issues waiting for eager contributors 😉.

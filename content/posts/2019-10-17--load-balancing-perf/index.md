@@ -58,7 +58,7 @@ public static Connection Select(Connection[] connections)
 
 ## Pre-Shuffling arrays
 
-The next two methods are a bit more niche as they involve pre-randomizing the connection array to avoid the calls to `Random` on the hot path. If only shuffling once isn’t enough, a separate thread could periodically scramble the array in the background. To rearrange the array in-place in linear time, I suggest the use of the so-called ["Fisher-Yates shuffle"](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle):
+The next two methods are a bit more niche as they involve pre-randomizing the connection array to avoid the calls to `Random` on the hot path. If only shuffling once isn’t enough, a separate thread could periodically scramble the array in the background. To rearrange the array in-place in linear time, I suggest the use of the so-called ["Fisher-Yates shuffle"](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle "Fisher-Yates Shuffle - Wikipedia"):
 
 ```csharp
 public static void Shuffle<T>(T[] arr)
@@ -123,7 +123,7 @@ public Connection Select()
 }
 ```
 
-> The full source is on GitHub at [tkp1n/lb](https://github.com/tkp1n/lb)
+> The full source is on GitHub at [tkp1n/lb](https://github.com/tkp1n/lb "lb - GitHub")
 
 ## The numbers
 

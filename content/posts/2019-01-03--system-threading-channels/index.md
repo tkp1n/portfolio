@@ -5,7 +5,7 @@ cover: chuttersnap-317196-unsplash.jpg
 author: Nicolas Portmann
 ---
 
-The `System.Threading.Channels` namespace provides data structures (stores) for pub/sub scenarios. It enables you to decouple one-to-many publishers from one-to-many subscribers just as its equally named counterpart from [go](https://tour.golang.org/concurrency/2).
+The `System.Threading.Channels` namespace provides data structures (stores) for pub/sub scenarios. It enables you to decouple one-to-many publishers from one-to-many subscribers just as its equally named counterpart from [go](https://tour.golang.org/concurrency/2 "golang - Concurrency - Channels").
 
 At first glance, this might look similar to the functionality provided by `BufferBlock<T>` from `System.Threading.Task.Dataflow`. `Channels`, however, are a more low-level primitive upon which libraries such as `Dataflow` can be built. If `Dataflow` was still in development today, it would most certainly be based on `Channels` to some extent.
 
@@ -142,7 +142,7 @@ As already mentioned, the writing side is in control of `Channel` completion. Pu
 
 ### Usage patterns
 
-The following text and usage patterns were taken from or inspired by the partially outdated [REDAME](https://github.com/dotnet/corefxlab/blob/31d98a89d2e38f786303bf1e9f8ba4cf5b203b0f/src/System.Threading.Tasks.Channels/README.md#example-producerconsumer-patterns) from Stephen Toub. I took the liberty of updating them as the API has slightly changed since its corefxlab days.
+The following text and usage patterns were taken from or inspired by the partially outdated [REDAME](https://github.com/dotnet/corefxlab/blob/31d98a89d2e38f786303bf1e9f8ba4cf5b203b0f/src/System.Threading.Tasks.Channels/README.md#example-producerconsumer-patterns "Channels README on GitHub") from Stephen Toub. I took the liberty of updating them as the API has slightly changed since its corefxlab days.
 
 #### Producer patterns
 
@@ -282,12 +282,12 @@ private static async Task Consume(ChannelReader<int> c)
 ## Summary
 
 System.Threading.Channels is a highly versatile library to orchestrate pub/sub scenarios in the .NET universe asynchronously.
-It is fast enough, to dispatch well over 20 million messages in under a second and does not block any thread while doing so. It's blocking community counterpart [Disruptor-net](https://github.com/disruptor-net/Disruptor-net) is faster in some scenarios (compare the benchmarks below with their [performance results](https://github.com/disruptor-net/Disruptor-net/wiki/Performance-Results)).
+It is fast enough, to dispatch well over 20 million messages in under a second and does not block any thread while doing so. It's blocking community counterpart [Disruptor-net](https://github.com/disruptor-net/Disruptor-net "Disruptor-net on GitHub") is faster in some scenarios (compare the benchmarks below with their [performance results](https://github.com/disruptor-net/Disruptor-net/wiki/Performance-Results "Performance Results from Disruptor-net on GitHub")).
 I am currently using Channels to sequence the writes of multiple producers to a single `PipeWriter` (from `System.IO.Pipelines`), avoiding some calls to `pipeWriter.FlushAsync` if `channel.TryRead` returns true multiple times.
 
 ## Benchmarks
 
-> The source code for the benchmark for reproduction can be found [here](https://github.com/tkp1n/ChannelPlayground). Be aware, that the Bounded channel was sized to be able to store all messages. If the channel were undersized, the benchmarks scores would look much worse.
+> The source code for the benchmark for reproduction can be found [here](https://github.com/tkp1n/ChannelPlayground "ChannelPlayground project on GitHub"). Be aware, that the Bounded channel was sized to be able to store all messages. If the channel were undersized, the benchmarks scores would look much worse.
 
 ### Multi-Publisher / Multi-Subscriber
 

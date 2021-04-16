@@ -11,13 +11,13 @@ We start by installing three dependencies (what would web dev be without some ta
 
 * *marked* (0.7.0) will transform most of the Markdown input to HTML
 * *highlight.js* (9.15.8) applies beautiful nice highlighting to the code fragments within the Markdown
-* *DOMpurify* (1.0.11) helps to keep things secure to avoid [XSS attack surface](https://angular.io/guide/security#xss)
+* *DOMpurify* (1.0.11) helps to keep things secure to avoid [XSS attack surface](https://angular.io/guide/security#preventing-cross-site-scripting-xss "XSS - Angular.io Guide")
 
 ```bash
 npm install marked highlight.js dompurify
 ```
 
-To make our code snippets look pretty, we need to choose a CSS file from *highlight.js*. This [demo page](https://highlightjs.org/static/demo/) showcases all available designs (and supported languages for that matter).
+To make our code snippets look pretty, we need to choose a CSS file from *highlight.js*. This [demo page](https://highlightjs.org/static/demo/ "Demo - highlightjs.org") showcases all available designs (and supported languages for that matter).
 The selected style can be applied, by including the CSS file to the Angular project, e.g., by adding the following to the `style` section of the `angular.json` configuration file.
 
 ```json
@@ -114,4 +114,4 @@ export class AppComponent {
 }
 ```
 
-> The full demo project is available on [GitHub](https://github.com/tkp1n/md2html).
+> The full demo project is available on [GitHub](https://github.com/tkp1n/md2html "md2html - GitHub").
