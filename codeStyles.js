@@ -44,7 +44,7 @@ const obsidian = css`
   }
 
   .hljs-meta {
-    color: #557182;
+    color: #809EB0;
   }
 
   .hljs-tag,
@@ -71,7 +71,7 @@ const obsidian = css`
   .hljs-comment,
   .hljs-quote,
   .hljs-deletion {
-    color: #818e96;
+    color: #A7B2B8;
   }
 
   .hljs-selector-class {
@@ -88,6 +88,10 @@ const obsidian = css`
   .hljs-name,
   .hljs-strong {
     font-weight: bold;
+  }
+  
+  a > code {
+    color: #1A52CE;
   }
 `;
 
