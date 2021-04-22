@@ -5,6 +5,7 @@ import { codeStyles } from '../codeStyles.js';
 import './post-header.js';
 import '../global/post-tags.js';
 import '../global/footer.js';
+import CommentRepository from '../lib/runtime/comments.js';
 
 export default class PostComponent extends LitElement {
     static get properties() {
@@ -120,6 +121,12 @@ export default class PostComponent extends LitElement {
         this.date = new Date(data.date).toLocaleDateString();
         this.author = data.author;
         this.category = data.category;
+
+        /*
+        new CommentRepository('http://localhost:10002/devstoreaccount1', 'st=2021-04-17T19%3A25%3A18Z&se=2099-04-18T19%3A25%3A00Z&sp=r&sv=2018-03-28&tn=comments&sig=SowifuHkuJTyi%2BIUCaNON3nQyTG1edgiZVU7m6S0U9A%3D')
+            .top('asdf', 3)
+            .then(res => console.log(res));
+         */
     }
 
     render() {

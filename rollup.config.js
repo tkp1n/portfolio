@@ -2,14 +2,14 @@ import { terser } from 'rollup-plugin-terser';
 import resolve from '@rollup/plugin-node-resolve';
 import minifyHTML from 'rollup-plugin-minify-html-literals';
 import copy from 'rollup-plugin-copy';
-import mdBuild from './lib/mdBuild.js';
+import mdBuild from './lib/build/mdBuild.js';
 
 // `npm run build` -> `production` is true
 // `npm run dev` -> `production` is false
 const production = !process.env.ROLLUP_WATCH;
 
 export default {
-	input: 'routes.js',
+	input: 'main.js',
 	output: {
 		dir: 'public',
 		format: 'es',

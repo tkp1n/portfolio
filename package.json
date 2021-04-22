@@ -6,7 +6,7 @@
     "watch": "rollup -c -w",
     "dev": "npm-run-all --parallel start watch",
     "start": " browser-sync public -w --single",
-    "clean": "node lib/clean.js"
+    "clean": "node lib/build/clean.js"
   },
   "dependencies": {
     "lit-element": "^2.4.0",
